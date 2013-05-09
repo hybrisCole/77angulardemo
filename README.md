@@ -7,4 +7,6 @@ Montado encima de https://github.com/yeoman/generator-angular
 
 Referirse a las documentaciones de Yeoman (http://yeoman.io/), Grunt (http://gruntjs.com/), y Bower (http://bower.io/) para instalar todo lo necesario. npm (https://npmjs.org/) es necesario para instalar esos otros bichillos.
 
+Si por aquello se necesitara nodejs para correr algo, porfa usar la version 0.8.4.
+
 grunt test para ejecutar los test cases, grunt build para construir el proyecto, grunt server para estar viendo con LiveReload los cambios en vivo.
