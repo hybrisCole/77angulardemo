@@ -1,23 +1,22 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: CrearContactoCtrl', function () {
 
   // load the controller's module
   beforeEach(module('77DigitalAngularDemoApp'));
 
-  var MainCtrl,
+  var CrearContactoCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    CrearContactoCtrl = $controller('CrearContactoCtrl', {
       $scope: scope
     });
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.urls.length).toBe(2);
-    expect(scope.techies.length).toBe(3);
+    expect(scope.awesomeThings.length).toBe(3);
   });
 });

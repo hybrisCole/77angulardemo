@@ -1,9 +1,16 @@
 <div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
+  <h1>Angular Test, 77 Digital</h1>
+  <h3>De momento estoy montando esto con:</h3>
   <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
+    <li ng-repeat="tech in techies" >
+      <a href="{{tech.link}}" target="_blank">{{tech.nombre}}</a>
+    </li>
   </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+  <hr />
+  <h3>Estos links los estoy haciendo en el scope, (meh, que tan bueno sera eso? :S)</h3>
+  <ul>
+    <li ng-repeat="url in urls" >
+      <a href="{{url.link}}">{{url.nombre}}</a>
+    </li>
+  </ul>  
 </div>
