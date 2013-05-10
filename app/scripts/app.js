@@ -2,7 +2,8 @@
 
 var app = angular.module('77DigitalAngularDemoApp', ['ui.bootstrap']);
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider,$httpProvider) {
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
   $routeProvider
     .when('/', {
       templateUrl: 'views/main.html',

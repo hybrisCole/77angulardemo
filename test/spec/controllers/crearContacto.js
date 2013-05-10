@@ -16,7 +16,7 @@ describe('Controller: CrearContactoCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
+  it('deberia haber un listado de las provincias de Costa Rica en el Scope', function () {
+    expect(scope.provincias.length).toBe(7);
+  });  
 });

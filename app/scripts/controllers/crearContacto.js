@@ -1,10 +1,19 @@
 'use strict';
 
 angular.module('77DigitalAngularDemoApp')
-  .controller('CrearContactoCtrl', ['$scope', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+  .controller('CrearContactoCtrl', ['$scope','contactoService', function ($scope,contactoService) {
+    $scope.provincias = [
+      'San Jose',
+      'Heredia',
+      'Alajuela',
+      'Cartago',
+      'Guanacaste',
+      'Limon',
+      'Puntarenas'
     ];
+    $scope.guardarContacto = function(){
+      contactoService.guardarContacto($scope.contactoForm).then(function(data){
+        console.log(data);
+      });
+    };
   }]);
