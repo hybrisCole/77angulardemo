@@ -2,17 +2,7 @@
 
 var app = angular.module('77DigitalAngularDemoApp');
 
-app.controller('MainCtrl', function ($scope) {
-  $scope.urls = [
-    {
-      nombre:'Crear Contacto',
-      link:'#/crearContacto'
-    },
-    {
-      nombre:'Listar Contactos',
-      link:'#/listarContactos'
-    }
-  ];
+app.controller('MainCtrl', ['$scope', function ($scope) {
   $scope.techies = [
     {
       nombre:'Angular UI Directives',
@@ -27,4 +17,4 @@ app.controller('MainCtrl', function ($scope) {
       link:'https://github.com/yeoman/generator-angular'
     }
   ];
-});
+}]);

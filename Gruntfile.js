@@ -263,6 +263,7 @@ module.exports = function (grunt) {
   grunt.renameTask('regarde', 'watch');
 
   grunt.registerTask('server', [
+    'jshint',
     'clean:server',
     'coffee:dist',
     'compass:server',
@@ -273,6 +274,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('test', [
+    'jshint',
     'clean:server',
     'coffee',
     'compass',

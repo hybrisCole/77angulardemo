@@ -5,3 +5,4 @@ dist
 libpeerconnection.log
 app/components
 dist
+.DS_Store
