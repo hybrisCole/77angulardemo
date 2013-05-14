@@ -1,11 +1,11 @@
- <form class="form-horizontal">
+<form class="form-horizontal" name="formContacto">
   <fieldset>
     <h2>Contacto</h2>
     <div class="control-group">
       <label class="control-label">Nombre Completo</label>
       <div class="controls">
         <input ng-model="contactoForm.nombreCompleto" 
-          id="nombre-completo" name="nombre-completo" type="text" placeholder="Nombre Completo" class="input-xlarge" required> 
+        id="nombre-completo" name="nombre-completo" type="text" placeholder="Nombre Completo" class="input-xlarge" required> 
         <p class="help-block"></p>
       </div>
     </div>
@@ -30,7 +30,7 @@
       <label class="control-label">Ciudad</label>
       <div class="controls">
         <input ng-model="contactoForm.ciudad" id="ciudad" name="ciudad" type="text" 
-          placeholder="Ciudad" class="input-xlarge" required>
+        placeholder="Ciudad" class="input-xlarge" required>
         <p class="help-block"></p>
       </div>
     </div>      
@@ -38,8 +38,8 @@
     <div class="control-group">
       <label class="control-label">Provincia</label>
       <div class="controls">
-          <select ng-model="contactoForm.provincia" id="provincia" name="provincia" 
-            class="input-xlarge" ng-options="p for p in provincias"></select>          
+        <select ng-model="contactoForm.provincia" id="provincia" name="provincia" 
+        class="input-xlarge" ng-options="p for p in provincias" required></select>
       </div>
     </div>
     <div class="control-group">
@@ -49,6 +49,17 @@
     </div>
   </fieldset>
   <hr/>
-    <h3>Valor del Form:</h3>    
-    <pre>{{contactoForm}}</pre>
+  <h3>Valor del Form:</h3>    
+  <pre>{{contactoForm}}</pre>
 </form>
+<div modal="modalContacto" close="closeModal()" options="modalOpts">
+  <div class="modal-header">
+    <h4>Crear Contacto</h4>
+  </div>
+  <div class="modal-body">
+    <p>{{modalMessage}}</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-warning cancel" ng-click="closeModal()">Cerrar</button>
+  </div>
+</div>
