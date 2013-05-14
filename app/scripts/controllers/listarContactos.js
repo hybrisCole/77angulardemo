@@ -3,7 +3,6 @@
 angular.module('77DigitalAngularDemoApp').controller('ListarContactosCtrl',
   ['$scope','contactoService', function ($scope,contactoService) {
     contactoService.listarContactos().then(function(data){
-      console.log(JSON.stringify(data));
       $scope.contactosData = data;
     });
     $scope.gridOptions = {
