@@ -4,16 +4,15 @@
     <div class="control-group">
       <label class="control-label">Nombre Completo</label>
       <div class="controls">
-        <input ng-model="contactoForm.nombreCompleto" id="nombre-completo" name="nombre-completo" type="text" placeholder="Nombre Completo"
-        class="input-xlarge">
+        <input ng-model="contactoForm.nombreCompleto" 
+          id="nombre-completo" name="nombre-completo" type="text" placeholder="Nombre Completo" class="input-xlarge" required> 
         <p class="help-block"></p>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label">Direccion Linea 1</label>
       <div class="controls">
-        <input ng-model="contactoForm.direccion1" id="address-line1" name="direccion-linea1" type="text" placeholder="Direccion Linea 1"
-        class="input-xlarge">
+        <input ng-model="contactoForm.direccion1" id="address-line1" name="direccion-linea1" type="text" placeholder="Direccion Linea 1" class="input-xlarge" required>
         <p class="help-block">Direccion de la calle, P.O. box, Nombre de la Compania</p>
       </div>
     </div>
@@ -21,8 +20,8 @@
     <div class="control-group">
       <label class="control-label">Direccion Linea 2</label>
       <div class="controls">
-        <input ng-model="contactoForm.direccion2" id="address-line2" name="address-line2" type="text" placeholder="Direccion Linea 2"
-        class="input-xlarge">
+        <input ng-model="contactoForm.direccion2" id="address-line2" name="address-line2" type="text" 
+        placeholder="Direccion Linea 2" class="input-xlarge">
         <p class="help-block">Apartmento, Suite , Edificio, Piso, etc.</p>
       </div>
     </div>
@@ -30,7 +29,8 @@
     <div class="control-group">
       <label class="control-label">Ciudad</label>
       <div class="controls">
-        <input ng-model="contactoForm.ciudad" id="ciudad" name="ciudad" type="text" placeholder="Ciudad" class="input-xlarge">
+        <input ng-model="contactoForm.ciudad" id="ciudad" name="ciudad" type="text" 
+          placeholder="Ciudad" class="input-xlarge" required>
         <p class="help-block"></p>
       </div>
     </div>      
@@ -38,9 +38,8 @@
     <div class="control-group">
       <label class="control-label">Provincia</label>
       <div class="controls">
-          <select ng-model="contactoForm.provincia" id="provincia" name="provincia" class="input-xlarge">
-              <option ng-repeat="provincia in provincias" value="{{provincia}}">{{provincia}}</option>
-          </select>
+          <select ng-model="contactoForm.provincia" id="provincia" name="provincia" 
+            class="input-xlarge" ng-options="p for p in provincias"></select>          
       </div>
     </div>
     <div class="control-group">
