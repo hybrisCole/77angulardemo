@@ -14,7 +14,7 @@ angular.module('77DigitalAngularDemoApp')
       },
       listarContactos: function(){
         var deferred = $q.defer();
-        $http.get('http://tgj.jit.su/contactos/listar').success(function(data){
+        $http.get('http://tgj.jit.su/contactos/listado').success(function(data){
           deferred.resolve(data);
         }).error(function(){
           deferred.reject();

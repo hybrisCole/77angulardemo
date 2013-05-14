@@ -1,2 +1,9 @@
 @import "compass_twitter_bootstrap";
 @import  "_compass_twitter_bootstrap_responsive";
+.gridStyle {
+    border: 1px solid;
+    border-color:#D4D4D4;
+    border-color:hsla(40%, 0%, 83%,1);
+    width: 100%;
+    height:500px;
+}

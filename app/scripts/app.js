@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('77DigitalAngularDemoApp', ['ui.bootstrap']);
+var app = angular.module('77DigitalAngularDemoApp', ['ui.bootstrap','ngGrid']);
 
 app.config(function ($routeProvider,$httpProvider) {
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
