@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('77DigitalAngularDemoApp')
-  .controller('CrearContactoCtrl', ['$scope','contactoService', function ($scope,contactoService) {
-    $scope.contactoForm = {provincia: "San Jose"};
+  .controller('CrearContactoCtrl', ['$scope','$location','contactoService', function ($scope,$location,contactoService) {
+    $scope.contactoForm = {provincia: 'San Jose'};
     $scope.provincias = [
       'San Jose',
       'Heredia',
@@ -21,19 +21,26 @@ angular.module('77DigitalAngularDemoApp')
       $scope.modalContacto = false;
     };
 
+    $scope.verListadoContactos = function(){
+      $location.path('listarContactos');
+    };
+
     $scope.modalOpts = {
       backdropFade: true,
       dialogFade:true
     };
 
     $scope.guardarContacto = function(){
-      contactoService.guardarContacto($scope.contactoForm).then(function(data){        
-        if(data.msg === "OK!"){          
-          $scope.contactoForm = {provincia: "San Jose"};
-          $scope.modalMessage = "Se ha creado un nuevo contacto";
+      var guardarContactoBtn = angular.element(document.getElementById('btnGuardarContacto'));
+      guardarContactoBtn.css('cursor','wait');
+      contactoService.guardarContacto($scope.contactoForm).then(function(data){
+        guardarContactoBtn.css('cursor','pointer');
+        if(data.msg === 'OK!'){
+          $scope.contactoForm = {provincia: 'San Jose'};
+          $scope.modalMessage = 'Se ha creado un nuevo contacto';
           $scope.openModal();
-        }else if(data.msg === "FAIL"){
-          $scope.modalMessage = "La creacion de un contacto ha fallado";
+        }else if(data.msg === 'FAIL'){
+          $scope.modalMessage = 'La creacion de un contacto ha fallado';
           $scope.openModal();
         }
       });

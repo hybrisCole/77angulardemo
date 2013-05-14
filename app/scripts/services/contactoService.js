@@ -11,6 +11,15 @@ angular.module('77DigitalAngularDemoApp')
           deferred.reject();
         });
         return deferred.promise;
+      },
+      listarContactos: function(){
+        var deferred = $q.defer();
+        $http.get('http://tgj.jit.su/contactos/listar').success(function(data){
+          deferred.resolve(data);
+        }).error(function(){
+          deferred.reject();
+        });
+        return deferred.promise;
       }
     };
   }]);

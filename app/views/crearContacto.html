@@ -44,7 +44,7 @@
     </div>
     <div class="control-group">
       <div class="controls">
-        <button ng-click="guardarContacto()" class="btn btn-success btn-large">Crear Contacto</button>
+        <button id="btnGuardarContacto" ng-click="guardarContacto()" class="btn btn-success btn-large">Crear Contacto</button>
       </div>
     </div>
   </fieldset>
@@ -61,5 +61,6 @@
   </div>
   <div class="modal-footer">
     <button class="btn btn-warning cancel" ng-click="closeModal()">Cerrar</button>
+    <button class="btn btn-warning cancel" ng-click="verListadoContactos()">Ir a Listado de Contactos</button>
   </div>
 </div>

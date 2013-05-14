@@ -18,5 +18,9 @@ describe('Controller: CrearContactoCtrl', function () {
 
   it('deberia haber un listado de las provincias de Costa Rica en el Scope', function () {
     expect(scope.provincias.length).toBe(7);
-  });  
+  });
+
+  it('San Jose deberia ser la provincia seleccionada por defcto', function () {
+    expect(scope.contactoForm.provincia).toBe("San Jose");
+  });
 });
