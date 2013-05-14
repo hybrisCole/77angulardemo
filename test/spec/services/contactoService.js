@@ -27,9 +27,26 @@ describe('Service: contactoService', function () {
     var message = undefined;
     $httpBackend.expectPOST('http://tgj.jit.su/contactos/crear',contactoObj
     ).respond(
-      {'msg':'ok'}
+      {'msg':'OK!'}
     );
+    runs(function(){
+      contactoService.guardarContacto(contactoObj).then(function(value){
+        message = value;
+      });
+      $httpBackend.flush();
+    });
+    waitsFor(function() { return message !== undefined; }, 500);
+    runs(function() {
+      expect(message.msg).toBe('OK!');
+    });
+  });
 
+  it('should return FAIL when calling guardarContacto', function () {
+    var message = undefined;
+    $httpBackend.expectPOST('http://tgj.jit.su/contactos/crear',contactoObj
+    ).respond(
+      {'msg':'FAIL'}
+    );
     runs(function(){
       contactoService.guardarContacto(contactoObj).then(function(value){
         message = value;
@@ -40,9 +57,7 @@ describe('Service: contactoService', function () {
     waitsFor(function() { return message !== undefined; }, 500);
 
     runs(function() {
-      expect(message.msg).toBe('ok');
+      expect(message.msg).toBe('FAIL');
     });
-
   });
-
 });
