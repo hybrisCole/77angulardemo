@@ -6,8 +6,14 @@ describe('Service: contactoService', function () {
   beforeEach(module('77DigitalAngularDemoApp'));
 
   // instantiate service
-  var contactoService
-  ,   $httpBackend;
+  var contactoService, $httpBackend,
+  contactoObj = {
+    'nombreCompleto':'Mr Trouble',
+    'direccion1':'77 Digital',
+    'direccion2':'Plaza Florencia, local #16, Guachipelin',
+    'ciudad':'Escazu',
+    'provincia':'San Jose'
+  };
   beforeEach(inject(function(_contactoService_,$injector) {
     contactoService = _contactoService_;
     $httpBackend = $injector.get('$httpBackend');
@@ -19,28 +25,13 @@ describe('Service: contactoService', function () {
 
   it('should return OK when calling guardarContacto', function () {
     var message = undefined;
-    $httpBackend.expectPOST('http://tgj.jit.su/contactos/crear',
-      {
-        'nombreCompleto':'Mr Trouble',
-        'direccion1':'77 Digital',
-        'direccion2':'Plaza Florencia, local #16, Guachipelin',
-        'ciudad':'Escazu',
-        'provincia':'San Jose'
-      }
+    $httpBackend.expectPOST('http://tgj.jit.su/contactos/crear',contactoObj
     ).respond(
       {'msg':'ok'}
     );
 
     runs(function(){
-      contactoService.guardarContacto(
-        {
-          "nombreCompleto":"Mr Trouble",
-          "direccion1":"77 Digital",
-          "direccion2":"Plaza Florencia, local #16, Guachipelin",
-          "ciudad":"Escazu",
-          "provincia":"San Jose"
-        }
-      ).then(function(value){
+      contactoService.guardarContacto(contactoObj).then(function(value){
         message = value;
       });
       $httpBackend.flush();
