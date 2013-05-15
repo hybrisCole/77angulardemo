@@ -28,9 +28,12 @@ describe('Controller: CrearContactoCtrl', function () {
 
   it('deberia retornar un mensaje de OK cuando se guarda un contacto',function(){
     scope.contactoForm = contactoData;
-    $httpBackend.expectPOST('http://tgj.jit.su/contactos/crear',contactoData);
-    scope.guardarContacto();    
+    expect(scope.guardandoContacto).toBe(false);
+    $httpBackend.expectPOST('http://tgj.jit.su/contactos/crear',contactoData);    
+    scope.guardarContacto();
+    expect(scope.guardandoContacto).toBe(true);
     $httpBackend.flush();
     expect(scope.modalMessage).toBe("Se ha creado un nuevo contacto");
+    expect(scope.guardandoContacto).toBe(false);
   });
 });

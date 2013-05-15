@@ -25,9 +25,11 @@ describe('Controller: ListarContactosCtrl', function () {
   });
 
   it('obtener listado de contactos', function () {
+    scope.contactosCargados = false;
     $httpBackend.expectGET('http://tgj.jit.su/contactos/listado');  
     ListarContactosCtrl = controller('ListarContactosCtrl', { $scope: scope });
     $httpBackend.flush();
     expect(scope.contactosData).toBe(contactoData);
+    scope.contactosCargados = true;
   });
 });
