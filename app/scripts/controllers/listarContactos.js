@@ -2,8 +2,10 @@
 
 angular.module('77DigitalAngularDemoApp').controller('ListarContactosCtrl',
   ['$scope','contactoService', function ($scope,contactoService) {
+    $scope.contactosCargados = false;
     contactoService.listarContactos().then(function(data){
       $scope.contactosData = data;
+      $scope.contactosCargados = true;
     });
     $scope.gridOptions = {
       data: 'contactosData',

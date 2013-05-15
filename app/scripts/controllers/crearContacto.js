@@ -2,6 +2,7 @@
 
 angular.module('77DigitalAngularDemoApp')
   .controller('CrearContactoCtrl', ['$scope','$location','contactoService', function ($scope,$location,contactoService) {
+    $scope.cargandoContacto = '';
     $scope.contactoForm = {provincia: 'San Jose'};
     $scope.provincias = [
       'San Jose',
@@ -31,10 +32,9 @@ angular.module('77DigitalAngularDemoApp')
     };
 
     $scope.guardarContacto = function(){
-      var guardarContactoBtn = angular.element(document.getElementById('btnGuardarContacto'));
-      guardarContactoBtn.css('cursor','wait');
+      $scope.cargandoContacto = 'cursor-wait';
       contactoService.guardarContacto($scope.contactoForm).then(function(data){
-        guardarContactoBtn.css('cursor','pointer');
+        $scope.cargandoContacto = '';
         if(data.msg === 'OK!'){
           $scope.contactoForm = {provincia: 'San Jose'};
           $scope.modalMessage = 'Se ha creado un nuevo contacto';
