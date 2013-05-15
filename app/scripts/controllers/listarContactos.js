@@ -15,10 +15,10 @@ angular.module('77DigitalAngularDemoApp').controller('ListarContactosCtrl',
       'Guanacaste',
       'Limon',
       'Puntarenas'
-    ];    
+    ];
     contactoService.listarContactos().then(function(data){
       $scope.myData = data;
-      $scope.contactosCargados = true;      
+      $scope.contactosCargados = true;
     });
     $scope.gridOptions = {
       data: 'myData',
@@ -64,8 +64,8 @@ angular.module('77DigitalAngularDemoApp').controller('ListarContactosCtrl',
         $scope.actualizandoContacto = true;
         contactoService.actualizarContacto($scope.contactoSeleccionado[0]).then(function(data){
           $scope.actualizandoContacto = false;
-          if(data.msg === "OK!"){
-             $scope.alerts.push({type: 'success', msg: 'El contacto se ha modificado correctamente.'});
+          if(data.msg === 'OK!'){
+            $scope.alerts.push({type: 'success', msg: 'El contacto se ha modificado correctamente.'});
           }else{
             $scope.alerts.push({type: 'error', msg: 'Oh-oh! Algo paso cuando se estaba modificando el Contacto :S'});
           }
@@ -78,10 +78,11 @@ angular.module('77DigitalAngularDemoApp').controller('ListarContactosCtrl',
       if($scope.contactoSeleccionado[0]){
         $scope.eliminandoContacto = true;
         contactoService.eliminarContacto($scope.contactoSeleccionado[0]).then(function(data){
-        $scope.eliminandoContacto = false;          
-          if(data.msg === "OK!"){
-             $scope.alerts.push({type: 'success', msg: 'El contacto se ha eliminado correctamente.'});
-             contactoService.listarContactos().then(function(data){
+          $scope.eliminandoContacto = false;
+          $scope.contactoSeleccionado[0] = null;
+          if(data.msg === 'OK!'){
+            $scope.alerts.push({type: 'success', msg: 'El contacto se ha eliminado correctamente.'});
+            contactoService.listarContactos().then(function(data){
               $scope.myData = data;
             });
           }else{
@@ -89,7 +90,7 @@ angular.module('77DigitalAngularDemoApp').controller('ListarContactosCtrl',
           }
         });
       }else{
-        $scope.alerts.push({type: 'error', msg: 'Seleccione un Contacto para poder modificarlo'});
+        $scope.alerts.push({type: 'error', msg: 'Seleccione un Contacto para poder elminarlo'});
       }
     };
   }

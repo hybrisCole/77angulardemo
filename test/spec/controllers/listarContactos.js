@@ -12,6 +12,8 @@ describe('Controller: ListarContactosCtrl', function () {
   beforeEach(inject(function ($controller, $rootScope,_$httpBackend_) {        
     $httpBackend = _$httpBackend_;
     $httpBackend.when('GET', 'http://tgj.jit.su/contactos/listado').respond(contactoData);
+    $httpBackend.when('POST', 'http://tgj.jit.su/contactos/actualizar').respond({msg:"OK!"});
+    $httpBackend.when('POST', 'http://tgj.jit.su/contactos/eliminar').respond({msg:"OK!"});
     scope = $rootScope.$new();    
     ListarContactosCtrl = $controller('ListarContactosCtrl', {
       $scope: scope
@@ -24,12 +26,55 @@ describe('Controller: ListarContactosCtrl', function () {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-  it('obtener listado de contactos', function () {
-    scope.contactosCargados = false;
+  it('deberia retornar un listado de contactos', function () {
+    expect(scope.contactosCargados).toBe(false);
     $httpBackend.expectGET('http://tgj.jit.su/contactos/listado');  
     ListarContactosCtrl = controller('ListarContactosCtrl', { $scope: scope });
     $httpBackend.flush();
-    expect(scope.contactosData).toBe(contactoData);
-    scope.contactosCargados = true;
+    expect(scope.myData).toBe(contactoData);
+    expect(scope.contactosCargados).toBe(true);
   });
+
+  it('deberia modificar un Contacto',function(){
+    expect(scope.actualizandoContacto).toBe(false);
+    scope.contactoSeleccionado = [contactoData];
+    $httpBackend.expectPOST('http://tgj.jit.su/contactos/actualizar',contactoData);
+    scope.actualizarContacto();
+    expect(scope.actualizandoContacto).toBe(true);
+    $httpBackend.flush();
+    expect(scope.actualizandoContacto).toBe(false);
+    expect(scope.alerts[0].type).toBe('success');
+    expect(scope.alerts[0].msg).toBe('El contacto se ha modificado correctamente.');
+  });
+
+
+  it('deberia mostrar error a la hora de modificar un Contacto si no hay seleccionados',function(){
+    scope.contactoSeleccionado = [];    
+    scope.actualizarContacto();
+    expect(scope.alerts[0].type).toBe('error');
+    expect(scope.alerts[0].msg).toBe('Seleccione un Contacto para poder modificarlo');
+    $httpBackend.flush();
+  });
+
+  it('deberia eliminar un Contacto',function(){
+    expect(scope.eliminandoContacto).toBe(false);
+    scope.contactoSeleccionado = [contactoData];
+    $httpBackend.expectPOST('http://tgj.jit.su/contactos/eliminar',contactoData);
+    scope.eliminarContacto();
+    expect(scope.eliminandoContacto).toBe(true);
+    $httpBackend.flush();
+    expect(scope.eliminandoContacto).toBe(false);
+    expect(scope.alerts[0].type).toBe('success');
+    expect(scope.alerts[0].msg).toBe('El contacto se ha eliminado correctamente.');
+  });
+
+  it('deberia mostrar error a la hora de eliminar un Contacto si no hay seleccionados',function(){
+    scope.contactoSeleccionado = [];    
+    scope.eliminarContacto();
+    expect(scope.alerts[0].type).toBe('error');
+    expect(scope.alerts[0].msg).toBe('Seleccione un Contacto para poder elminarlo');
+    $httpBackend.flush();
+  });
+
+
 });
