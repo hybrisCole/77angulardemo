@@ -1,6 +1,6 @@
 <div class="row-fluid">
   <h3>Listado de Contactos</h3>
-  <h4>{{contactoSeleccionado[0]}}</h4>
+  <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
 </div>
 <div class="row-fluid" ng-show="contactosCargados">
   <div class="span6">
@@ -9,7 +9,6 @@
   <div class="span6">
     <form class="form-horizontal" name="formContacto">
       <fieldset>
-        <h2>Contacto</h2>
         <div class="control-group">
           <label class="control-label">Nombre Completo</label>
           <div class="controls">
@@ -53,7 +52,8 @@
         </div>
         <div class="control-group">
           <div class="controls">
-            <button id="btnGuardarContacto" ng-click="actualizarContacto()" ng-class="{'cursor-wait':actualizandoContacto}" class="btn btn-success btn-large">Actualizar Contacto</button>
+            <button id="btnGuardarContacto" ng-click="actualizarContacto()" ng-class="{'cursor-wait':actualizandoContacto}" class="btn btn-success">Actualizar Contacto</button>
+            <button id="btnGuardarContacto" ng-click="eliminarContacto()" ng-class="{'cursor-wait':eliminandoContacto}" class="btn btn-danger ">Eliminar Contacto</button>
           </div>
         </div>
       </fieldset>

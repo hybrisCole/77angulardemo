@@ -20,6 +20,24 @@ angular.module('77DigitalAngularDemoApp')
           deferred.reject();
         });
         return deferred.promise;
+      },
+      actualizarContacto: function(contactoObj){
+        var deferred = $q.defer();
+        $http.post('http://tgj.jit.su/contactos/actualizar',contactoObj).success(function(data){
+          deferred.resolve(data);
+        }).error(function(){
+          deferred.reject();
+        });
+        return deferred.promise;
+      },
+      eliminarContacto: function(contactoObj){
+        var deferred = $q.defer();
+        $http.post('http://tgj.jit.su/contactos/eliminar',contactoObj).success(function(data){
+          deferred.resolve(data);
+        }).error(function(){
+          deferred.reject();
+        });
+        return deferred.promise;
       }
     };
   }]);
