@@ -1,10 +1,64 @@
 <div class="row-fluid">
   <h3>Listado de Contactos</h3>
+  <h4>{{contactoSeleccionado[0]}}</h4>
 </div>
 <div class="row-fluid" ng-show="contactosCargados">
-  <div class="span9 offset1">
-    <div class="gridStyle" ng-grid="gridOptions"></div>
+  <div class="span6">
+    <div class="gridStyle" ng-grid="gridOptions"></div>    
   </div>
+  <div class="span6">
+    <form class="form-horizontal" name="formContacto">
+      <fieldset>
+        <h2>Contacto</h2>
+        <div class="control-group">
+          <label class="control-label">Nombre Completo</label>
+          <div class="controls">
+            <input ng-model="contactoSeleccionado[0].nombreCompleto" 
+            id="nombre-completo" name="nombre-completo" type="text" placeholder="Nombre Completo" class="input-xlarge" required> 
+            <p class="help-block"></p>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Direccion Linea 1</label>
+          <div class="controls">
+            <input ng-model="contactoSeleccionado[0].direccion1" id="address-line1" name="direccion-linea1" type="text" placeholder="Direccion Linea 1" class="input-xlarge" required>
+            <p class="help-block">Direccion de la calle, P.O. box, Nombre de la Compania</p>
+          </div>
+        </div>
+        <!-- address-line2 input-->
+        <div class="control-group">
+          <label class="control-label">Direccion Linea 2</label>
+          <div class="controls">
+            <input ng-model="contactoSeleccionado[0].direccion2" id="address-line2" name="address-line2" type="text" 
+            placeholder="Direccion Linea 2" class="input-xlarge">
+            <p class="help-block">Apartmento, Suite , Edificio, Piso, etc.</p>
+          </div>
+        </div>
+        <!-- city input-->
+        <div class="control-group">
+          <label class="control-label">Ciudad</label>
+          <div class="controls">
+            <input ng-model="contactoSeleccionado[0].ciudad" id="ciudad" name="ciudad" type="text" 
+            placeholder="Ciudad" class="input-xlarge" required>
+            <p class="help-block"></p>
+          </div>
+        </div>      
+        <!-- country select -->
+        <div class="control-group">
+          <label class="control-label">Provincia</label>
+          <div class="controls">
+            <select ng-model="contactoSeleccionado[0].provincia" id="provincia" name="provincia" 
+            class="input-xlarge" ng-options="p for p in provincias" required></select>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button id="btnGuardarContacto" ng-click="actualizarContacto()" ng-class="{'cursor-wait':actualizandoContacto}" class="btn btn-success btn-large">Actualizar Contacto</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>  
 </div>
 <div class="row" ng-show="!contactosCargados">
   <div class="span4 offset5">

@@ -3,12 +3,25 @@
 angular.module('77DigitalAngularDemoApp').controller('ListarContactosCtrl',
   ['$scope','contactoService', function ($scope,contactoService) {
     $scope.contactosCargados = false;
+    $scope.actualizandoContacto = false;
+    $scope.contactoSeleccionado = [];
+    $scope.provincias = [
+      'San Jose',
+      'Heredia',
+      'Alajuela',
+      'Cartago',
+      'Guanacaste',
+      'Limon',
+      'Puntarenas'
+    ];
     contactoService.listarContactos().then(function(data){
-      $scope.contactosData = data;
-      $scope.contactosCargados = true;
+      $scope.myData = data;
+      $scope.contactosCargados = true;      
     });
     $scope.gridOptions = {
-      data: 'contactosData',
+      data: 'myData',
+      selectedItems: $scope.contactoSeleccionado,
+      multiSelect: false,
       columnDefs: [
         {
           field:'__v',
