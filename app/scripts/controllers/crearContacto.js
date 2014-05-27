@@ -38,11 +38,10 @@ angular.module('77DigitalAngularDemoApp')
         if(data.msg === 'OK!'){
           $scope.contactoForm = {provincia: 'San Jose'};
           $scope.modalMessage = 'Se ha creado un nuevo contacto';
-          $scope.openModal();
         }else if(data.msg === 'FAIL'){
           $scope.modalMessage = 'La creacion de un contacto ha fallado';
-          $scope.openModal();
         }
+        $scope.openModal();
       });
     };
   }]);

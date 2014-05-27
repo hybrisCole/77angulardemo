@@ -1,6 +1,7 @@
 {
   "name": "77digitalangulardemo",
   "version": "0.0.0",
+  "repository":"https://github.com/hybrisCole/77angulardemo",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -16,7 +17,7 @@
     "grunt-contrib-htmlmin": "~0.1.1",
     "grunt-contrib-imagemin": "~0.1.2",
     "grunt-contrib-livereload": "~0.1.2",
-    "grunt-bower-requirejs": "~0.4.1",
+
     "grunt-usemin": "~0.1.10",
     "grunt-regarde": "~0.1.1",
     "grunt-rev": "~0.1.0",
