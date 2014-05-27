@@ -10,8 +10,8 @@ describe('Controller: CrearContactoCtrl', function () {
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope,_$httpBackend_) {
-    $httpBackend = _$httpBackend_;
-    $httpBackend.when('POST', 'http://tgj.jit.su/contactos/crear',contactoData).respond({msg:"OK!"});
+    //$httpBackend = _$httpBackend_;
+    //$httpBackend.when('POST', 'http://sharelocapi.jit.su/contacto',contactoData).respond({msg:"OK!"});
     scope = $rootScope.$new();
     CrearContactoCtrl = $controller('CrearContactoCtrl', {
       $scope: scope
@@ -29,11 +29,12 @@ describe('Controller: CrearContactoCtrl', function () {
   it('deberia retornar un mensaje de OK cuando se guarda un contacto',function(){
     scope.contactoForm = contactoData;
     expect(scope.guardandoContacto).toBe(false);
-    $httpBackend.expectPOST('http://tgj.jit.su/contactos/crear',contactoData);    
+    //$httpBackend.expectPOST('http://sharelocapi.jit.su/contacto',contactoData);
     scope.guardarContacto();
     expect(scope.guardandoContacto).toBe(true);
-    $httpBackend.flush();
-    expect(scope.modalMessage).toBe("Se ha creado un nuevo contacto");
+    scope.$root.$digest();
     expect(scope.guardandoContacto).toBe(false);
+    //$httpBackend.flush();
+    expect(scope.modalMessage).toBe("Se ha creado un nuevo contacto");
   });
 });

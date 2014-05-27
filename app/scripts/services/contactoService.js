@@ -2,7 +2,7 @@
 
 angular.module('77DigitalAngularDemoApp')
   .factory('contactoService', ['$http','$q',function($http,$q) {
-    var contactos = [],
+    var contactos = [{'provincia':'San Jose','nombreCompleto':'Jorge Alberto Cole Palacios','direccion1':'77Digital','direccion2':'Plaza Florencia, local #16','ciudad':'Escazu'}],
       msgOK = {msg:'OK!'},
       msgFail = {msg:'FAIL'};
     return{
@@ -29,7 +29,7 @@ angular.module('77DigitalAngularDemoApp')
       },
       actualizarContacto: function(contactoObj){
         var deferred = $q.defer();
-        $http.put('http://sharelocapi.jit.su/contacto'+contactoObj.id,contactoObj).success(function(data){
+        $http.put('http://sharelocapi.jit.su/contacto'+contactoObj.id,contactoObj).success(function(){
           deferred.resolve(msgOK);
         }).error(function(){
           deferred.reject(msgFail);
@@ -38,7 +38,7 @@ angular.module('77DigitalAngularDemoApp')
       },
       eliminarContacto: function(contactoObj){
         var deferred = $q.defer();
-        $http.delete('http://sharelocapi.jit.su/contacto',contactoObj).success(function(data){
+        $http.delete('http://sharelocapi.jit.su/contacto',contactoObj).success(function(){
           deferred.resolve(msgOK);
         }).error(function(){
           deferred.reject(msgFail);
