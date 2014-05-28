@@ -6,3 +6,5 @@ libpeerconnection.log
 app/components
 dist
 .DS_Store
+*****WebStorm****
+.idea/

@@ -11,6 +11,7 @@ files = [
   'app/components/angular/angular-*.js',
   'app/components/jquery/jquery.js',
   'app/components/angular-mocks/angular-mocks.js',
+  'app/components/lodash/lodash.js',
   'app/components/angular-bootstrap/ui-bootstrap-tpls.min.js',
   'app/components/angular-grid/ng-grid-2.0.5.min.js',  
   'app/scripts/*.js',
