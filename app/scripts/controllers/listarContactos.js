@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('77DigitalAngularDemoApp').controller('ListarContactosCtrl',
-  ['$scope','contactoService', function ($scope,contactoService) {
+  ['$scope','contactoService','$timeout', function ($scope,contactoService,$timeout) {
     $scope.contactosCargados = false;
     $scope.actualizandoContacto = false;
     $scope.eliminandoContacto = false;
@@ -18,8 +18,10 @@ angular.module('77DigitalAngularDemoApp').controller('ListarContactosCtrl',
     ];
     var listarContactos = function(){
       contactoService.listarContactos().then(function(data){
-        $scope.myData = data;
-        $scope.contactosCargados = true;
+        $timeout(function(){
+          $scope.myData = data;
+          $scope.contactosCargados = true;
+        },1000);
       });
     };
     listarContactos();
