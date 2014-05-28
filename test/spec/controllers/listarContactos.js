@@ -34,6 +34,10 @@ describe('Controller: ListarContactosCtrl', function () {
     scope.$root.$digest();
     expect(scope.myData.length).toBe(1);
     expect(scope.contactosCargados).toBe(true);
+    //npm install
+    //bower install
+    //git fetch origin
+    //git checkout -b no_http origin/no_http
 
   });
 

@@ -16,10 +16,14 @@ angular.module('77DigitalAngularDemoApp').controller('ListarContactosCtrl',
       'Limon',
       'Puntarenas'
     ];
-    contactoService.listarContactos().then(function(data){
-      $scope.myData = data;
-      $scope.contactosCargados = true;
-    });
+    var listarContactos = function(){
+      contactoService.listarContactos().then(function(data){
+        $scope.myData = data;
+        $scope.contactosCargados = true;
+      });
+    };
+    listarContactos();
+
     $scope.gridOptions = {
       data: 'myData',
       selectedItems: $scope.contactoSeleccionado,
@@ -66,6 +70,7 @@ angular.module('77DigitalAngularDemoApp').controller('ListarContactosCtrl',
           $scope.actualizandoContacto = false;
           if(data.msg === 'OK!'){
             $scope.alerts.push({type: 'success', msg: 'El contacto se ha modificado correctamente.'});
+            listarContactos();
           }else{
             $scope.alerts.push({type: 'error', msg: 'Oh-oh! Algo paso cuando se estaba modificando el Contacto :S'});
           }

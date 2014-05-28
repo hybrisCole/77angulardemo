@@ -14,6 +14,10 @@ angular.module('77DigitalAngularDemoApp')
       'Puntarenas'
     ];
 
+    $scope.holaMundo = function (){
+      $scope.holaMundoVar = true;
+    };
+
     $scope.openModal = function () {
       $scope.modalContacto = true;
     };
