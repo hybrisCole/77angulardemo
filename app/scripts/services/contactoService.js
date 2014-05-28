@@ -51,13 +51,10 @@ angular.module('77DigitalAngularDemoApp')
         return deferred.promise;
       },
       eliminarContacto: function(contactoObj){
-        /*var deferred = $q.defer();
-        $http.delete('http://sharelocapi.jit.su/contacto',contactoObj).success(function(){
-          deferred.resolve(msgOK);
-        }).error(function(){
-          deferred.reject(msgFail);
-        });
-        return deferred.promise;*/
+        contactos = _.without(contactos,contactoObj);
+        var deferred = $q.defer();
+        deferred.resolve(msgOK);
+        return deferred.promise;
       }
     };
   }]);
