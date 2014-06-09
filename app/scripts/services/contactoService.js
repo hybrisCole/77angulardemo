@@ -9,7 +9,8 @@ angular.module('77DigitalAngularDemoApp')
           'nombreCompleto':'Jorge Alberto Cole Palacios',
           'direccion1':'77Digital',
           'direccion2':'Plaza Florencia, local #16',
-          'ciudad':'Escazu'}
+          'ciudad':'Escazu'
+        }
       ],
       msgOK = {msg:'OK!'},
       guid = (function() {
@@ -36,10 +37,10 @@ angular.module('77DigitalAngularDemoApp')
         deferred.resolve(contactos);
         return deferred.promise;
       },
-      actualizarContacto: function(contactoObj){
+      actualizarContacto: function(){
 
       },
-      eliminarContacto: function(contactoObj){
+      eliminarContacto: function(){
 
       }
     };
